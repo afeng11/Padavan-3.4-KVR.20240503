@@ -28,13 +28,17 @@ jobs:
         cpio git python-docutils gettext automake autopoint texinfo build-essential help2man \
         pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
     - name: Clone source code
+      env:
+        KERNEL: 3.4
       run: |
+        git clone --depth=1 https://github.com/afeng11/Padavan-3.4-KVR.20240503.git /opt/rt-n56u
         cd toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
         TNAME: "WDR7300"
+        KERNEL: 3.4
       run: |
         cwd=`pwd`
         CONFIG_TOOLCHAIN_DIR=${cwd//\//\\\/}\\/toolchain-mipsel
