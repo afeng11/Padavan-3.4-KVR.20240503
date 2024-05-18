@@ -40,9 +40,7 @@ jobs:
         TNAME: "WDR7300"
         KERNEL: 3.4
       run: |
-        cwd=`pwd`
-        CONFIG_TOOLCHAIN_DIR=${cwd//\//\\\/}\\/toolchain-mipsel
-        cd trunk
+        cd /opt/rt-n56u/trunk
         for m in $TNAME;
         do
         if [ ! -f configs/templates/$m.config ] ; then
